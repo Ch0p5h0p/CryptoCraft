@@ -37,7 +37,8 @@ CryptoCraft includes:
 - compress & decompress: compress and decompress text with GZip
 
 ## Future implementations
-- Vigenere cipher (enc/dec)
-- Ceasar cipher (enc/dec)
+- Vigenere cipher
+- Ceasar cipher
+- XOR cipher
 - Book chunking: chunks text into sizes able to be pasted into books
 - Book reader: reads all the pages in a book and concatenates them into one string
