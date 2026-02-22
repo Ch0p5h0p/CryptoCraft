@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "cryptocraft",
+  "version": "${version}",
+  "name": "CryptoCraft",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/cryptocraft/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.Ch0p5h0p.cryptocraft.client.CryptocraftDataGenerator"
+    ],
+    "client": [
+      "org.Ch0p5h0p.cryptocraft.client.CryptocraftClient"
+    ],
+    "main": [
+      "org.Ch0p5h0p.cryptocraft.Cryptocraft"
+    ]
+  },
+  "mixins": [
+    "cryptocraft.mixins.json",
+    {
+      "config": "cryptocraft.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

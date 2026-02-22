@@ -1,0 +1,17 @@
+/op
+/hashitem
+/
+/hashitem
+/sym_encrypt myKey hello world
+/sym_encrypt "myKey" "hello world"
+/sign this is some text
+/sign "this is some text"
+/sym_encrypt hello
+/sym_encrypt hello hello
+/sym_encrypt hello test
+/sym_encrypt mykey "hello world"
+/sym_encrypt mykey000 "hello world"
+/sym_encrypt mykey000000 "hello world"
+/sym_encrypt mykey0000000000 "hello world"
+/sym_encrypt mykey00000000000 "hello world"
+/sym_encrypt myKey hello world
