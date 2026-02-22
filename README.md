@@ -38,7 +38,12 @@ CryptoCraft includes:
 
 ## Future implementations
 - Vigenere cipher
-- Ceasar cipher
+- Caesar cipher
 - XOR cipher
 - Book chunking: chunks text into sizes able to be pasted into books
 - Book reader: reads all the pages in a book and concatenates them into one string
+
+## Disclaimer
+Yes, this is a cryptography mod. However, I am also a tired and ADHD college student that, while I enjoy crypto and coding, I get tired of trying to coerce Java into doing what I want. Also, I'm operating generally off of assumptions on what people are willing to work for. If someone is willing to spend huge amounts of resources trying to find out where you hid your diamonds, they were going to find them one way or another. Given what I've said, you're using this mod with two things in mind:
+1. This is a cryptography mod, and will protect your communications from the average Joe.
+2. This is not a "modern cryptography" mod. If someone like the NSA takes legitimate interest in your communications, this won't save you. Sorry :(
