@@ -38,7 +38,7 @@ public class CreatePassphraseScreen extends Screen {
 
 
         passField.setMaxLength(256);
-        passField.setFocusUnlocked(true);
+        passField.setFocusUnlocked(false);
         passField.setFocused(true);
 
         this.addDrawableChild(passField);

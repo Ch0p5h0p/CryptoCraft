@@ -1,5 +1,7 @@
 package org.Ch0p5h0p.cryptocraft.client.hashing;
 
+import net.minecraft.component.Component;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -17,6 +19,7 @@ public class Hasher {
 
     public static String hashItem(PlayerEntity p) throws Exception {
         ItemStack stack = p.getMainHandStack();
+        //System.out.println(stack.get(DataComponentTypes.WRITABLE_BOOK_CONTENT));
         return hashToBase64(stack.getComponents().toString());
     }
 }

@@ -12,6 +12,7 @@ import org.Ch0p5h0p.cryptocraft.client.GUI.PassphraseLoginScreen;
 import org.Ch0p5h0p.cryptocraft.client.compression.GZip;
 import org.Ch0p5h0p.cryptocraft.client.encryption.*;
 import org.Ch0p5h0p.cryptocraft.client.hashing.Hasher;
+import org.Ch0p5h0p.cryptocraft.client.util.BookHandler;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPPublicKey;
 
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.Security;
 import java.util.Base64;
+import java.util.List;
 
 public class CryptocraftClient implements ClientModInitializer {
 
@@ -250,6 +252,30 @@ public class CryptocraftClient implements ClientModInitializer {
                                             mc.player.sendMessage(Text.of(GZip.decompressString(StringArgumentType.getString(ctx, "compressed text"))), false);
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
+                                        }
+                                        return 0;
+                                    })
+                            )
+            );
+            commandDispatcher.register(
+                    ClientCommandManager.literal("read_book")
+                            .executes(ctx -> {
+                                MinecraftClient mc = MinecraftClient.getInstance();
+                                if (mc.player == null) return 0;
+                                mc.player.sendMessage(Text.of(BookHandler.readBook(mc.player)), false);
+                                return 0;
+                            })
+            );
+            commandDispatcher.register(
+                    ClientCommandManager.literal("chunk_text")
+                            .then(ClientCommandManager.argument("text", StringArgumentType.greedyString())
+                                    .executes(ctx -> {
+                                        MinecraftClient mc = MinecraftClient.getInstance();
+                                        if (mc.player == null) return 0;
+                                        List<String> data = BookHandler.chunkString(StringArgumentType.getString(ctx, "text"));
+                                        for (String chunk : data) {
+                                            mc.player.sendMessage(Text.of(chunk), false);
+                                            mc.player.sendMessage(Text.of(""), false);
                                         }
                                         return 0;
                                     })
