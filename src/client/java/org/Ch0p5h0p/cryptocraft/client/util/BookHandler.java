@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.RawFilteredPair;
 import net.minecraft.text.StyleSpriteSource;
+import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,17 +39,23 @@ public class BookHandler {
 
     public static String readBook(PlayerEntity p) {
         ItemStack stack = p.getMainHandStack();
-        List<RawFilteredPair<String>> data;
-        if (stack.get(DataComponentTypes.WRITABLE_BOOK_CONTENT)!=null) {
-            data = stack.get(DataComponentTypes.WRITABLE_BOOK_CONTENT).pages();
-        } else {
-            return null;
+        String key = stack.getItem().getTranslationKey();
+        StringBuilder concatenated = new StringBuilder();
+
+        if (key.contains("writable_book")) {
+            if (stack.get(DataComponentTypes.WRITABLE_BOOK_CONTENT) == null) return null;
+            List<RawFilteredPair<String>> data = stack.get(DataComponentTypes.WRITABLE_BOOK_CONTENT).pages();
+            for (RawFilteredPair<String> pair : data) {
+                concatenated.append(pair.get(false));
+            }
+        } else if (key.contains("written_book")) {
+            if (stack.get(DataComponentTypes.WRITTEN_BOOK_CONTENT) == null) return null;
+            List<RawFilteredPair<Text>> data = stack.get(DataComponentTypes.WRITTEN_BOOK_CONTENT).pages();
+            for (RawFilteredPair<Text> pair : data) {
+                concatenated.append(pair.get(false).getString());
+            }
         }
 
-        StringBuilder concatenated = new StringBuilder();
-        for (RawFilteredPair<String> pair : data) {
-            concatenated.append(pair.get(false));
-        }
 
         return concatenated.toString();
 

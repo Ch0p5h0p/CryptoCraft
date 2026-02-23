@@ -267,6 +267,19 @@ public class CryptocraftClient implements ClientModInitializer {
                             })
             );
             commandDispatcher.register(
+                    ClientCommandManager.literal("hash_book")
+                            .executes(ctx -> {
+                                MinecraftClient mc = MinecraftClient.getInstance();
+                                if (mc.player == null) return 0;
+                                try {
+                                    mc.player.sendMessage(Text.of(Hasher.hashToBase64(BookHandler.readBook(mc.player))), false);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                return 0;
+                            })
+            );
+            commandDispatcher.register(
                     ClientCommandManager.literal("chunk_text")
                             .then(ClientCommandManager.argument("text", StringArgumentType.greedyString())
                                     .executes(ctx -> {
