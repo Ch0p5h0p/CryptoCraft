@@ -3,11 +3,13 @@
 A simple cryptography mod for Minecraft (fabric)
 
 CryptoCraft includes:
-1. Asymmetric encryption and decryption
-2. Symmetric encryption and decryption
-3. Item hashing (hashes the full NBT of the item)
-4. Signature generation and verification
-5. GZip string compression
+- Asymmetric encryption and decryption
+- Symmetric encryption and decryption
+- Item hashing (hashes the full NBT of the item)
+- Signature generation and verification
+- GZip string compression
+- Book text concatenation
+- Text chunking for books
 
 ## Algorithms:
 - Private/Public key: RSA-1024
@@ -16,7 +18,7 @@ CryptoCraft includes:
 
 ## Soft requirements:
 - ChatPatches (for copying chat messages)
-- SlashLength (to enable long commands)
+- Slash Length (to enable long commands)
 
 ## Notes on the algorithms:
 - RSA-1024: Yes, I know RSA isn't as good as ECC. Yes, I know that 1024 is a horrible key size. However: RSA means I dont have to also track signing vs encrypting keys, and 1024 key length means that the keys are shorter and easier to put in chat (or books, potentially)
@@ -35,13 +37,13 @@ CryptoCraft includes:
 - get_key_fingerprints: list all registered public keys
 - get_public: return your public key
 - compress & decompress: compress and decompress text with GZip
+- read_book: read all the text from a book and concatenate it into one string
+- chunk_text: chunk text into sizes viable for use in books
 
 ## Future implementations
 - Vigenere cipher
 - Caesar cipher
 - XOR cipher
-- Book chunking: chunks text into sizes able to be pasted into books
-- Book reader: reads all the pages in a book and concatenates them into one string
 
 ## Disclaimer
 Yes, this is a cryptography mod. However, I am also a tired and ADHD college student that, while I enjoy crypto and coding, I get tired of trying to coerce Java into doing what I want. Also, I'm operating generally off of assumptions on what people are willing to work for. If someone is willing to spend huge amounts of resources trying to find out where you hid your diamonds, they were going to find them one way or another. Given what I've said, you're using this mod with two things in mind:
