@@ -38,6 +38,7 @@ CryptoCraft includes:
 - get_public: return your public key
 - compress & decompress: compress and decompress text with GZip
 - read_book: read all the text from a book and concatenate it into one string
+- hash_book: automatically hash a book's contents
 - chunk_text: chunk text into sizes viable for use in books
 
 ## Future implementations
