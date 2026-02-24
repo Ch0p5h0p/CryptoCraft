@@ -5,7 +5,7 @@ A simple cryptography mod for Minecraft (fabric)
 CryptoCraft includes:
 - Asymmetric encryption and decryption
 - Symmetric encryption and decryption
-- Item hashing (hashes the full NBT of the item)
+- Item hashing
 - Signature generation and verification
 - GZip string compression
 - Book text concatenation
