@@ -45,7 +45,7 @@ public class CreatePassphraseScreen extends Screen {
 
         // Confirm button
         this.addDrawableChild(
-                ButtonWidget.builder(Text.literal("Register"), button -> {
+                ButtonWidget.builder(Text.literal("Register Master Key"), button -> {
                     String pass = passField.getText();
                     PrivateKeyManager.setPassphrase(pass.toCharArray());
                     try {

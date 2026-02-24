@@ -48,12 +48,29 @@ public class CryptocraftClient implements ClientModInitializer {
         });
         ClientCommandRegistrationCallback.EVENT.register(((commandDispatcher, commandRegistryAccess) -> {
             commandDispatcher.register(
-                    ClientCommandManager.literal("hashitem")
+                    ClientCommandManager.literal("hash_item")
                             .executes(ctx -> {
                                 MinecraftClient mc = MinecraftClient.getInstance();
                                 if (mc.player == null) return 0;
                                 try {
-                                    mc.player.sendMessage(Text.of(Hasher.hashItem(mc.player)), false);
+                                    mc.player.sendMessage(Text.of(Hasher.hashItem(mc.player.getMainHandStack())), false);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                return 0;
+                            })
+            );
+            commandDispatcher.register(
+                    ClientCommandManager.literal("hash_shulker")
+                            .executes(ctx -> {
+                                MinecraftClient mc = MinecraftClient.getInstance();
+                                if (mc.player == null) return 0;
+                                try {
+                                    if (!mc.player.getMainHandStack().getItem().getTranslationKey().contains("shulker_box")) {
+                                        mc.player.sendMessage(Text.of("You're not holding a shulker!"), false);
+                                        return 0;
+                                    }
+                                    mc.player.sendMessage(Text.of(Hasher.hashShulker(mc.player.getMainHandStack())), false);
                                 } catch (Exception e) {
                                     throw new RuntimeException(e);
                                 }
